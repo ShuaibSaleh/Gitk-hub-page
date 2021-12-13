@@ -1,37 +1,140 @@
-## Welcome to GitHub Pages
+# Using of "const keyword" in C++
+<font size="2"> This is my text number 2 </font>
 
-You can use the [editor on GitHub](https://github.com/ShuaibSaleh/Gitk-hub-page/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<font size="4">**1) Constant Variables in C++**</font>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<font size="3">We use const to declare that the variable has constant value,and should be initialized while it is declared.
 
-### Markdown
+Example:</font>
+````
+int main
+{
+    const int j = 20;
+    const int k = j + 15;     // works fine
+    i++;     // this leads to Compile time error  // you can't change the value after declartion 
+}
+````
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+<font size="4">**2)Pointers with const keyword in C++**</font>
 
-# Header 1
-## Header 2
-### Header 3
+<font size="3">we can declare it in two ways, either we can apply const to what the pointer is pointing to, 
+or we can make the pointer itself a constant.
 
-- Bulleted
-- List
+Example:</font>
+````
+int main{
+//1)Pointer to a const variable
+const int* x = new int (5);
+char const* y = new char ('k'); //Also it could be written this way
 
-1. Numbered
-2. List
+//2)const Pointer
+int w = 1;
+int* const z = &w; //We can't change the pointer, which means it will always point to the variable x but can change the value that it points to, by changing the value of x.
+    const int * const s =new int (5) ;  // We can also have a const pointer pointing to a const variable.
+    }
+````
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+<font size="4">**3) const Function Arguments and Return types**</font>
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+<font size="3">We can make the return type or arguments of a function as const. 
+Then we cannot change any of them.
 
-### Jekyll Themes
+Example:</font>
+````
+void f(const int i)
+{
+    i++;    // error
+}
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ShuaibSaleh/Gitk-hub-page/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+//If a function has a non-const parameter, it cannot be passed a const argument while making a call.//
 
-### Support or Contact
+void t(int*) 
+{ 
+    // function logic 
+    
+} //If we pass a const int* argument to the function t, it will give error.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+//But, a function which has a const type parameter, can be passed a const type argument as well as a non-const argument.//
+
+void x(const int*) 
+{
+    // function logic
+    
+}//This function can have a int* as well as const int* type argument.
+
+const int g()
+{
+    return 1;
+}
+
+int main()
+{
+    const int j = g(); // j= 1
+    int k = g();       // k = 1
+}
+````
+
+
+<font size="4">**4) Defining Class Data members as const**</font>
+
+<font size="3">These are data variables in class which are defined using const keyword. 
+They are not initialized during declaration. Their initialization is done in the constructor.
+
+Example:</font>
+````
+class set
+{
+    const int i;
+public:
+    set(int x):i(x)
+    {
+        cout << "i value is: " << i<< endl;
+    }
+}; // i is a constant data member, it is initialized with each object using the constructor. And once initialized, its value cannot be changed.
+
+
+
+int main() {
+    set j(10);
+    set k(20);
+}
+````
+
+<font size="4">**5) Defining Class Object as const**</font>
+
+<font size="3">When an object is declared or created using the const keyword, its data members can never be changed, 
+during the object's lifetime.
+
+Example:</font>
+````
+if in //the class set defined above, we want to define a constant object, we can do it like://
+
+const set r(30);
+````
+
+# Using of "& operator" in C++
+
+<font size="4">**1) Logical Operator**</font>
+
+<font size="3">Logical AND. True only if all the operands are true.
+
+Example:</font>
+````
+if(expression1 && expression2){
+
+/* function
+   body*/
+
+}
+````
+
+<font size="4">**2) reference Operator**</font>
+<font size="3">represents memory address of the operand
+
+Example:</font>
+````
+int x=7;
+cout<<&x; // will print address of x
+````
